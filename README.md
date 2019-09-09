@@ -1,4 +1,4 @@
-# moviesjulian
+# MoviesApp - VueJS
 
 Componentes:
 - Se han desarrollado tres componentes principales, uno para cada categoria de peliculas que se desee buscar. Cada uno de estos componentes realiza una solicitud a la API de TMDB por medio de Axios, para alimentar la vista y generar un contenido reactivo que cambiara cuando cambie en el servidor. Cada componente por si solo es indpendiente, permitiendo esto que al fallo de uno, los demas componentes no se vean afectados.
