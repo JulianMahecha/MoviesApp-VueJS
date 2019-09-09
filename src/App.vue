@@ -1,31 +1,22 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <b-navbar toggleable="lg" type="dark" variant="dark">
+      <b-navbar-brand>Movies App</b-navbar-brand>
+      <b-navbar-nav class="mx-auto">
+        <b-nav-item>
+          <router-link to="/">Top Rated</router-link>
+        </b-nav-item>
+        <b-nav-item>
+          <router-link to="top-rated">Popular</router-link>
+        </b-nav-item>
+        <b-nav-item>
+          <router-link to="top-rated">Trending</router-link>
+        </b-nav-item>
+      </b-navbar-nav>
+    </b-navbar>
+    <router-view />
   </div>
 </template>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
 </style>
