@@ -13,10 +13,6 @@
           <router-link to="upcoming">Upcoming</router-link>
         </b-nav-item>
       </b-navbar-nav>
-      <b-nav-form>
-        <b-form-input size="sm" class="mr-sm-2" placeholder="Search" v-model="filter"></b-form-input>
-        <b-button size="sm" class="my-2 my-sm-0" type="submit">Search</b-button>
-      </b-nav-form>
     </b-navbar>
     <router-view />
   </div>
