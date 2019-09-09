@@ -39,6 +39,11 @@ export default {
   created() {
     this.fetch();
   },
+ /*  computed:{
+      filteredMovie(){
+          return (this.filter = ,,¿¿)
+      }
+  }, */
   methods: {
     fetch() {
       let results = axios
