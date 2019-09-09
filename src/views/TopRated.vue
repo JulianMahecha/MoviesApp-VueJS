@@ -1,8 +1,25 @@
 <template>
-  <div class="top-rated">
-    <b-container>
+  <div class="top-rated p-2">
+    <b-container class="mx-auto">
       <b-row class="text-center">
-        <b-col>1 of 3</b-col>
+        <!-- Iteración -->
+        <b-col md="3" v-for="movie of movies" v-bind:key="movie.id">
+          <b-card
+            :title="movie.title"
+            img-src="https://picsum.photos/600/300/?image=25"
+            img-alt="Image"
+            img-top
+            tag="article"
+            style="max-width: 20rem;"
+            class="mb-2"
+          >
+          <!-- Texto de tarjeta -->
+            <b-card-text>{{ movie.overview }}</b-card-text>
+            <b-card-text>Calification: {{ movie.vote_average }}</b-card-text>
+
+            <b-button href="#" variant="primary">Go somewhere</b-button>
+          </b-card>
+        </b-col>
       </b-row>
     </b-container>
   </div>
@@ -14,17 +31,28 @@ import axios from "axios";
 
 export default {
   name: "top-rated",
-  created: function() {
-    let result = axios
-      .get(
-        "https://api.themoviedb.org/3/movie/top_rated?api_key=fccff7a20e96ef4b4191beea4a87a3e2&language=en-US&page=1"
-      )
-      .then(res => {
-        console.log(res.data);
-      })
-      .catch(err => {
-        console.log(err);
-      });
+  data() {
+    return {
+      movies: []
+    };
+  },
+  created() {
+    this.fetch();
+  },
+  methods: {
+    fetch() {
+      let results = axios
+        .get(
+          "https://api.themoviedb.org/3/movie/top_rated?api_key=fccff7a20e96ef4b4191beea4a87a3e2&language=en-US&page=1"
+        )
+        .then(res => {
+          this.movies = res.data.results;
+          console.log(res.data);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
   }
 };
 </script>
