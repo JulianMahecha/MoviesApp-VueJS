@@ -3,7 +3,8 @@
     <b-container class="mx-auto">
       <b-row class="text-center">
         <!-- Iteración -->
-        <b-col md="3" v-for="movie of movies" v-bind:key="movie.id">
+        <b-container class="p-2"><b-form-input size="sm" class="mr-sm-2" placeholder="Busqueda" v-model="filter"></b-form-input></b-container>
+        <b-col md="3" v-for="movie of filteredMovie" v-bind:key="movie.id">
           <b-card
             :title="movie.title"
             :img-src='"https://image.tmdb.org/t/p/w1280/"+movie.poster_path'
@@ -13,11 +14,14 @@
             style="max-width: 20rem;"
             class="mb-2"
           >
-          <!-- Texto de tarjeta -->
+            <!-- Texto de tarjeta -->
             <b-card-text>{{ movie.overview }}</b-card-text>
             <b-card-text>Calification: {{ movie.vote_average }}</b-card-text>
 
-            <b-button :href='"https://www.themoviedb.org/movie/"+movie.id' variant="primary">See Details</b-button>
+            <b-button
+              :href='"https://www.themoviedb.org/movie/"+movie.id'
+              variant="primary"
+            >See Details</b-button>
           </b-card>
         </b-col>
       </b-row>
@@ -28,22 +32,28 @@
 <script>
 // @ is an alias to /src
 import axios from "axios";
+import _ from "lodash";
 
 export default {
   name: "popular",
   data() {
     return {
-      movies: []
+      movies: [],
+      filter: ""
     };
   },
   created() {
     this.fetch();
   },
- /*  computed:{
-      filteredMovie(){
-          return (this.filter = ,,¿¿)
-      }
-  }, */
+  computed: {
+    filteredMovie() {
+      return this.filter == ""
+        ? this.movies
+        : this.movies.filter(item => {
+            return _.includes(item.title.toLowerCase(), this.filter);
+          });
+    }
+  },
   methods: {
     fetch() {
       let results = axios

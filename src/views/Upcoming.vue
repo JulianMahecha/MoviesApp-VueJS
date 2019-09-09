@@ -3,7 +3,8 @@
     <b-container class="mx-auto">
       <b-row class="text-center">
         <!-- Iteración -->
-        <b-col md="3" v-for="movie of movies" v-bind:key="movie.id">
+        <b-container class="p-2"><b-form-input size="sm" class="mr-sm-2" placeholder="Busqueda" v-model="filter"></b-form-input></b-container>
+        <b-col md="3" v-for="movie of filteredMovie" v-bind:key="movie.id">
           <b-card
             :title="movie.title"
             :img-src='"https://image.tmdb.org/t/p/w1280/"+movie.poster_path'
@@ -33,11 +34,21 @@ export default {
   name: "upcoming",
   data() {
     return {
-      movies: []
+      movies: [],
+      filter: ""
     };
   },
   created() {
     this.fetch();
+  },
+  computed: {
+    filteredMovie() {
+      return this.filter == ""
+        ? this.movies
+        : this.movies.filter(item => {
+            return _.includes(item.title.toLowerCase(), this.filter);
+          });
+    }
   },
   methods: {
     fetch() {
