@@ -30,7 +30,7 @@
 import axios from "axios";
 
 export default {
-  name: "top-rated",
+  name: "popular",
   data() {
     return {
       movies: []
@@ -43,7 +43,7 @@ export default {
     fetch() {
       let results = axios
         .get(
-          "https://api.themoviedb.org/3/movie/top_rated?api_key=fccff7a20e96ef4b4191beea4a87a3e2&language=en-US&page=1"
+          "https://api.themoviedb.org/3/movie/popular?api_key=fccff7a20e96ef4b4191beea4a87a3e2&language=en-US&page=1"
         )
         .then(res => {
           this.movies = res.data.results;

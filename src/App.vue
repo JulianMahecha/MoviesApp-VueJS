@@ -4,13 +4,13 @@
       <b-navbar-brand>Movies App</b-navbar-brand>
       <b-navbar-nav class="mx-auto">
         <b-nav-item>
-          <router-link to="/">Top Rated</router-link>
+          <router-link to="/">Popular</router-link>
         </b-nav-item>
         <b-nav-item>
-          <router-link to="top-rated">Popular</router-link>
+          <router-link to="top-rated">Top Rated</router-link>
         </b-nav-item>
         <b-nav-item>
-          <router-link to="top-rated">Trending</router-link>
+          <router-link to="upcoming">Upcoming</router-link>
         </b-nav-item>
       </b-navbar-nav>
     </b-navbar>
